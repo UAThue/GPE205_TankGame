@@ -7,6 +7,14 @@ public class PlayerController : Controller
     public KeyCode rotateClockwiseKey;
     public KeyCode rotateCounterClockwiseKey;
 
+    public void Awake()
+    {
+        // Add us to the GameManager list
+        GameManager.instance.players.Add(this);
+        // Change our object name
+        gameObject.name = "Player " + GameManager.instance.players.Count;
+    }
+
     public override void Start()
     {
     }
@@ -15,6 +23,12 @@ public class PlayerController : Controller
     {
         // Make a decision every frame draw. Note that AI's may make decisions at a slower rate.
         MakeDecisions();
+    }
+
+    public void OnDestroy()
+    {
+        // Remove us from the GameManager list
+        GameManager.instance.players.Remove(this);
     }
     public override void MakeDecisions()
     {

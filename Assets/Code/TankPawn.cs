@@ -2,6 +2,16 @@ using UnityEngine;
 
 public class TankPawn : Pawn
 {
+    public void Awake()
+    {
+        // Add ourselves to the GameManager list!
+        GameManager.instance.pawns.Add(this);
+
+        // Change our object name
+        gameObject.name = "TankPawn " + GameManager.instance.pawns.Count;
+
+    }
+
     public override void Start()
     {
         // Get the Rigidbody component
@@ -10,6 +20,12 @@ public class TankPawn : Pawn
 
     public override void Update()
     {
+    }
+
+    public void OnDestroy()
+    {
+        // Remove us from the GameManager List
+        GameManager.instance.pawns.Remove(this);
     }
 
     public override void MoveForward()

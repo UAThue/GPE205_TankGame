@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8356fa16673cd624ba92339657dcdb6c, type: 3}
       propertyPath: m_Name
-      value: TankOne
+      value: TankPrefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -68,6 +68,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8356fa16673cd624ba92339657dcdb6c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1983986345994397937}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8356fa16673cd624ba92339657dcdb6c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 536738154365879218}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8356fa16673cd624ba92339657dcdb6c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4324893193844934893}
   m_SourcePrefab: {fileID: 100100000, guid: 8356fa16673cd624ba92339657dcdb6c, type: 3}
 --- !u!1 &877769773925455517 stripped
 GameObject:
@@ -152,3 +158,30 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &536738154365879218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877769773925455517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81dc02cf84f99cb4abd565cbf83fada1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  currentHealth: 0
+  deathComponent: {fileID: 0}
+--- !u!114 &4324893193844934893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877769773925455517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13587af2b2200704098401effa279ac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

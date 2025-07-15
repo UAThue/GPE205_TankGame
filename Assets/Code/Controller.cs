@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Controller : MonoBehaviour
 {
     // Variable to hold our Pawn
-    public Pawn pawn;
+    [HideInInspector] public Pawn pawn;
 
     // Start is called before the first frame update
     public abstract void Start();

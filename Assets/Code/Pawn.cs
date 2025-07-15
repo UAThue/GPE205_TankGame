@@ -8,9 +8,17 @@ public abstract class Pawn : MonoBehaviour
     public float moveSpeed;
     // Variable for turn speed
     public float turnSpeed;
+    // Variable for damage done
+    public float damageDone = 1;
+    // Variable for shoot force
+    public float shootForce = 5000;
+    // Shots per second
+    public float shotsPerSecond = 2;
 
     // Component for moving
-    public Mover mover;
+    [HideInInspector] public Mover mover;
+    // Component for shooting
+    [HideInInspector] public Shooter shooter;
 
     // Start is called before the first frame update
     public abstract void Start();
@@ -24,4 +32,5 @@ public abstract class Pawn : MonoBehaviour
     public abstract void RotateCounterClockwise();
     public abstract void StrafeRight();
     public abstract void StrafeLeft();
+    public abstract void Shoot();
 }

@@ -2,5 +2,6 @@ using UnityEngine;
 
 public abstract class Shooter : MonoBehaviour
 {
-    public abstract void Shoot();
+    public abstract void Shoot(Pawn shooterPawn);
+    public abstract void TryShoot(Pawn shooterPawn);
 }

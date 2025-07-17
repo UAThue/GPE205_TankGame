@@ -58,27 +58,8 @@ public class TankPawn : Pawn
         Quaternion rotationVector = Quaternion.LookRotation(vectorToTarget, Vector3.up);
 
         // Change our rotation A LITTLE BIT toward rotating down that vector
-        this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, rotationVector, this.turnSpeed);
+        this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, rotationVector, this.turnSpeed * Time.deltaTime);
     }
-
-    public override void Seek(Vector3 positionToSeek)
-    {
-        // Rotate Towards the target
-        RotateTowards(positionToSeek);
-
-        // Move forward
-        MoveForward();
-    }
-
-    public override void Seek(GameObject objectToSeek)
-    {
-        Seek(objectToSeek.transform.position);
-    }
-    public override void Seek(Controller controllerToSeek)
-    {
-        Seek(controllerToSeek.pawn.gameObject);
-    }
-
     public override void RotateClockwise()
     {
         mover.RotateClockwise(turnSpeed);

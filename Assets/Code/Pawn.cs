@@ -34,9 +34,6 @@ public abstract class Pawn : MonoBehaviour
     public abstract void RotateCounterClockwise();
 
     public abstract void RotateTowards(Vector3 position);
-    public abstract void Seek(Vector3 position);
-    public abstract void Seek(GameObject objectToSeek);
-    public abstract void Seek(Controller controllerToSeek);
 
     public abstract void StrafeRight();
     public abstract void StrafeLeft();

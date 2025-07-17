@@ -1,17 +1,22 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AIController : Controller
 {
-    public enum AIStates { GUARD, CHASE, CHASEANDSHOOT, FLEE, BACKAWAY, BACKAWAYANDSHOOT, STANDANDSHOOT }
+    public enum AIStates { GUARD, CHASE, CHASEANDSHOOT, FLEE, BACKAWAY, BACKAWAYANDSHOOT, STANDANDSHOOT, PATROL }
     public AIStates currentState;
 
     protected GameObject target;
     protected float lastStateChangeTime;
 
+    public List<Transform> waypoints;
+    private int currentWaypoint = 0;
+    public float seekCutoffDistance = 1;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public override void Start()
     {
-        currentState = AIStates.GUARD;
         TargetPlayerByNumber(0);
     }
 
@@ -36,6 +41,45 @@ public class AIController : Controller
         }
 
         Debug.LogWarning("ERROR: COULD NOT TARGET PLAYER " + number );
+    }
+
+    public void Seek(Vector3 positionToSeek)
+    {
+        // Rotate Towards the target
+        pawn.RotateTowards(positionToSeek);
+
+        // Move forward
+        pawn.MoveForward();
+    }
+
+    public void Seek(GameObject objectToSeek)
+    {
+        Seek(objectToSeek.transform.position);
+    }
+
+    public void Seek(Controller controllerToSeek)
+    {
+        Seek(controllerToSeek.pawn.gameObject);
+    }
+
+
+    public void Patrol()
+    {
+        // Go to the current point I'm patrolling
+        Seek(waypoints[currentWaypoint].position);
+
+        // If I am "close enough" to have reached that point, advance so I go to the next patrol point
+        if (Vector3.Distance(pawn.transform.position, waypoints[currentWaypoint].position) <= seekCutoffDistance)
+        {
+            // Advance my current waypoint
+            currentWaypoint++;
+
+            // Make sure that if I go beyond the max waypoints, I loop back to zero
+            if (currentWaypoint >= waypoints.Count)
+            {
+                currentWaypoint = 0;
+            }
+        }
     }
 
     public void Guard()

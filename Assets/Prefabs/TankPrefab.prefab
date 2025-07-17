@@ -141,6 +141,7 @@ MonoBehaviour:
   shotsPerSecond: 5
   mover: {fileID: 0}
   shooter: {fileID: 0}
+  health: {fileID: 0}
 --- !u!114 &1841862181718866408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,7 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81dc02cf84f99cb4abd565cbf83fada1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 9999999
   currentHealth: 0
 --- !u!114 &4324893193844934893
 MonoBehaviour:

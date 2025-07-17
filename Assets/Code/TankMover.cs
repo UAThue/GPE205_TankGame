@@ -3,7 +3,7 @@ using UnityEngine;
 public class TankMover : Mover
 {
     // Tanks move via a rigidbody, so we include that here
-    public Rigidbody rigidbody;
+    public new Rigidbody rigidbody;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public override void Start()

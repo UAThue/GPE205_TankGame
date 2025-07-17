@@ -19,6 +19,8 @@ public abstract class Pawn : MonoBehaviour
     [HideInInspector] public Mover mover;
     // Component for shooting
     [HideInInspector] public Shooter shooter;
+    // Component for health
+    [HideInInspector] public Health health;
 
     // Start is called before the first frame update
     public abstract void Start();
@@ -30,6 +32,12 @@ public abstract class Pawn : MonoBehaviour
     public abstract void MoveBackward();
     public abstract void RotateClockwise();
     public abstract void RotateCounterClockwise();
+
+    public abstract void RotateTowards(Vector3 position);
+    public abstract void Seek(Vector3 position);
+    public abstract void Seek(GameObject objectToSeek);
+    public abstract void Seek(Controller controllerToSeek);
+
     public abstract void StrafeRight();
     public abstract void StrafeLeft();
     public abstract void Shoot();

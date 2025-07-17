@@ -18,7 +18,7 @@ public class AIController_Speedy : AIController
                 Guard();
 
                 // CHECK FOR TRANSITIONS AND CHANGE IF NEEDED
-                if (IsTargetWithinDistance(10))
+                if ((target != null))
                 {
                     ChangeState(AIStates.CHASEANDSHOOT);
                 }
@@ -29,8 +29,9 @@ public class AIController_Speedy : AIController
                 Shoot();
 
                 // CHECK FOR TRANSITIONS AND CHANGE IF NEEDED
-                if (!IsTargetWithinDistance(10))
+                if (IsTargetOutsideDistance(10))
                 {
+                    target = null;
                     ChangeState(AIStates.GUARD);
                 }
                 if (Time.time - lastStateChangeTime > 5)

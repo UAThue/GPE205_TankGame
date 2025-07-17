@@ -6,6 +6,12 @@ public class TankShooter : Shooter
     public Transform shootPosition;
     [HideInInspector] public float nextShootTime;
 
+    private NoiseMaker noiseMaker;
+
+    public override void Start()
+    {
+        noiseMaker = GetComponent<NoiseMaker>();
+    }
 
     public override void TryShoot(Pawn shooterPawn)
     {
@@ -33,6 +39,12 @@ public class TankShooter : Shooter
 
         // Set our next shoot time
         nextShootTime = Time.time + ( 1 / shooterPawn.shotsPerSecond );
+
+        // Make noise if we have our noisemaker
+        if (noiseMaker != null)
+        {
+            noiseMaker.MakeNoise(shootingNoiseVolume);
+        }
     }
 
 }

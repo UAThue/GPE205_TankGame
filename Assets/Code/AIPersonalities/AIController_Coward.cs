@@ -25,13 +25,6 @@ public class AIController_Coward : AIController
         {
             case AIStates.GUARD:
                 // DO WORK
-
-                // If we don't have a target, target player 0
-                if (target == null)
-                {
-                    TargetPlayerByNumber(0);
-                }
-
                 Guard();
                 // CHECK FOR TRANSITIONS
                 if (IsTargetWithinDistance(safeDistance))
@@ -50,7 +43,7 @@ public class AIController_Coward : AIController
                     ChangeState(AIStates.FLEE);
                 }
 
-                if (!IsTargetWithinDistance(fleeDistance))
+                if (IsTargetOutsideDistance(fleeDistance))
                 {
                     ChangeState(AIStates.GUARD);
                 }
@@ -64,7 +57,7 @@ public class AIController_Coward : AIController
                     ChangeState(AIStates.BACKAWAYANDSHOOT);
                 }
 
-                if (!IsTargetWithinDistance(fleeDistance))
+                if (IsTargetOutsideDistance(fleeDistance))
                 {
                     ChangeState(AIStates.GUARD);
                 }

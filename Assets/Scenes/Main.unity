@@ -515,6 +515,8 @@ MonoBehaviour:
   - {fileID: 2115216374}
   - {fileID: 56779197}
   seekCutoffDistance: 1
+  hearingSensitivity: 0
+  fieldOfView: 0
 --- !u!1 &421324062
 GameObject:
   m_ObjectHideFlags: 0
@@ -803,7 +805,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1524886847}
   - component: {fileID: 1524886846}
-  - component: {fileID: 1524886845}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -811,18 +812,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1524886845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1524886844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!108 &1524886846
 Light:
   m_ObjectHideFlags: 0
@@ -935,6 +924,8 @@ MonoBehaviour:
   currentState: 0
   waypoints: []
   seekCutoffDistance: 1
+  hearingSensitivity: 0
+  fieldOfView: 0
   fleeDistance: 25
   safeDistance: 10
   fleeHealthPercent: 0.5
@@ -1047,6 +1038,8 @@ MonoBehaviour:
   currentState: 0
   waypoints: []
   seekCutoffDistance: 1
+  hearingSensitivity: 0
+  fieldOfView: 60
 --- !u!114 &1874472814 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2774901576356270543, guid: 716e0db4875758248940e47ab0f0ccb2, type: 3}
@@ -1229,7 +1222,6 @@ GameObject:
   - component: {fileID: 2064234934}
   - component: {fileID: 2064234933}
   - component: {fileID: 2064234932}
-  - component: {fileID: 2064234931}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -1237,18 +1229,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2064234931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2064234930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!81 &2064234932
 AudioListener:
   m_ObjectHideFlags: 0

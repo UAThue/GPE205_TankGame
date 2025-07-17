@@ -111,6 +111,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8356fa16673cd624ba92339657dcdb6c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9172760229629130179}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8356fa16673cd624ba92339657dcdb6c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -7888030046756384265}
   m_SourcePrefab: {fileID: 100100000, guid: 8356fa16673cd624ba92339657dcdb6c, type: 3}
 --- !u!4 &533015036052278311 stripped
 Transform:
@@ -155,6 +158,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 0}
+  noiseMaker: {fileID: 0}
+  movementNoiseVolume: 5
 --- !u!54 &9210405345875031424
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -243,6 +248,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 521b5db86cba2114d86a12024b73d658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootingNoiseVolume: 100
   projectilePrefab: {fileID: 5178502939374882615, guid: 61d32532bc004204da2071327654309f, type: 3}
   shootPosition: {fileID: 5650079438665962245}
   nextShootTime: 0
+--- !u!114 &-7888030046756384265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877769773925455517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7de3909e2b0f424ea3073402ad1869c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noiseVolume: 0
+  noiseDecayPerSecond: 500

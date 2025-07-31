@@ -13,6 +13,10 @@ public class GameManager : MonoBehaviour
     public GameObject playerPawnPrefab;
     public GameObject playerControllerPrefab;
 
+    [Header("Helper Objects")]
+    public LevelGenerator levelGenerator;
+    public Camera gameCamera;
+
     private void Awake()
     {
         if (instance == null)
@@ -33,7 +37,19 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // Generate our level
+        levelGenerator.GenerateLevel();
+
+        // Spawn our player
         SpawnPlayer(Vector3.zero);
+
+        // Attach the camera to the player
+        // Move the camera to 5 units (NOTE: Should make this a variable. Magic numbers are bad!)
+        gameCamera.transform.position = players[0].pawn.transform.position + (Vector3.up * 5) + (Vector3.forward * -2);
+        // Make camera look at the player
+        gameCamera.transform.LookAt(players[0].pawn.transform.position);
+        // Attach the camera to the player so it follows it around the game
+        gameCamera.transform.parent = players[0].pawn.transform;
     }
 
     // Update is called once per frame

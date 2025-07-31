@@ -19,13 +19,10 @@ public class TankShooter : Shooter
         {
             Shoot(shooterPawn);            
         }
-        Debug.Log("Trying to shoot!");
         
     }
     public override void Shoot(Pawn shooterPawn)
     {
-        Debug.Log("Shoot!");
-
         // Create the bullet at the position rotation and scale of the shootPosition
         GameObject bulletObject = Instantiate<GameObject>(projectilePrefab, shootPosition.position, shootPosition.rotation );
 

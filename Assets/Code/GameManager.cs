@@ -17,6 +17,15 @@ public class GameManager : MonoBehaviour
     public LevelGenerator levelGenerator;
     public Camera gameCamera;
 
+    [Header("Gameplay State Objects")]
+    public GameObject pressStartStateObject;
+    public GameObject mainMenuStateObject;
+    public GameObject playGameStateObject;
+    public GameObject gameOverVictoryStateObject;
+    public GameObject gameOverFailureStateObject;
+    public GameObject gameOptionsStateObject;
+    public GameObject creditsStateObject;
+
     private void Awake()
     {
         if (instance == null)
@@ -37,19 +46,30 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // Generate our level
-        levelGenerator.GenerateLevel();
+        // Start in our press start state
+        ChangeGameplayState(pressStartStateObject);
+    }
 
-        // Spawn our player
-        SpawnPlayer(Vector3.zero);
+    private void ChangeGameplayState (GameObject gameplayStateObject)
+    { 
+        // Deactivate all states
+        DeactivateAllStates();
 
-        // Attach the camera to the player
-        // Move the camera to 5 units (NOTE: Should make this a variable. Magic numbers are bad!)
-        gameCamera.transform.position = players[0].pawn.transform.position + (Vector3.up * 5) + (Vector3.forward * -2);
-        // Make camera look at the player
-        gameCamera.transform.LookAt(players[0].pawn.transform.position);
-        // Attach the camera to the player so it follows it around the game
-        gameCamera.transform.parent = players[0].pawn.transform;
+        // Activate the new state to move into
+        gameplayStateObject.SetActive(true);
+
+    }
+
+    private void DeactivateAllStates()
+    {
+        // Set all our state object to inactive
+        pressStartStateObject.SetActive(false);
+        mainMenuStateObject.SetActive(false);
+        playGameStateObject.SetActive(false);
+        gameOverVictoryStateObject.SetActive(false);
+        gameOverFailureStateObject.SetActive(false);
+        gameOptionsStateObject.SetActive(false);
+        creditsStateObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -57,6 +77,58 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
+    public void ActivateMainMenu()
+    {
+        // Change to the main menu state
+        ChangeGameplayState(mainMenuStateObject);
+
+        // TODO: Do anything we need to do when the main menu starts
+
+    }
+
+    public void ActivateGameplay()
+    { 
+        // Activate the object in the scene
+        ChangeGameplayState(playGameStateObject);
+
+        // TODO: Anything we need to do to start the game.  (Set score to zero? Set lives to? What? TBD!)
+        // Generate our level
+        levelGenerator.GenerateLevel();
+
+        // Spawn our player
+        SpawnPlayer(Vector3.zero);
+    }
+
+    public void ActivateOptionsScreen()
+    {
+        // Activate the object in the scene
+        ChangeGameplayState(gameOptionsStateObject);
+        // TODO: Anything we need to do
+    }
+
+    public void ActivateCreditsScreen()
+    {
+        // Activate the object in the scene
+        ChangeGameplayState(creditsStateObject);
+        // TODO: Anything we need to do
+    }
+
+    public void ActivateVictoryScreen()
+    {
+        // Activate the object in the scene
+        ChangeGameplayState(gameOverVictoryStateObject);
+        // TODO: Anything we need to do
+    }
+
+    public void ActivateLoseScreen()
+    {
+        // Activate the object in the scene
+        ChangeGameplayState(gameOverFailureStateObject);
+        // TODO: Anything we need to do
+    }
+
+
 
     void SpawnPlayer (Vector3 spawnPosition)
     {
@@ -66,8 +138,6 @@ public class GameManager : MonoBehaviour
         tempPlayerControllerObject.transform.position = Vector3.zero; 
         // Get the controller component
         PlayerController tempPlayerController = tempPlayerControllerObject.GetComponent<PlayerController>();
-        // (MOVED THIS TO THE CONTROLLER!) 
-        // players.Add(tempPlayerController);
 
         // Instantiate the player pawn
         GameObject tempPlayerPawnObject = Instantiate<GameObject>(playerPawnPrefab);
@@ -76,9 +146,7 @@ public class GameManager : MonoBehaviour
         // Move the player pawn to the spawn position
         tempPlayerPawnObject.transform.position = spawnPosition;
 
-        // Connect the pawn to the controller
-        tempPlayerController.pawn = tempPlayerPawn;
-        // (MOVED THIS TO THE TANKPAWN) Add it to the list
-        // pawns.Add(tempPlayerPawn);
+        // Connect the pawn to the controller (and set the camera)
+        tempPlayerController.Possess(tempPlayerPawn);
     }
 }

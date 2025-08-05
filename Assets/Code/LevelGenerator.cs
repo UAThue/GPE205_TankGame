@@ -14,8 +14,6 @@ public class LevelGenerator : MonoBehaviour
     public int tileWidth;
     public int tileHeight;
 
-
-
     public void SeedRandomNumberGenerator ()
     {
         // switch based on what type of randomization to use

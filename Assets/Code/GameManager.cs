@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour
     public GameObject gameOptionsStateObject;
     public GameObject creditsStateObject;
 
+    [Header("Gameplay Settings")]
+    public bool isSplitScreen = false;
+
     private void Awake()
     {
         if (instance == null)
@@ -96,8 +99,28 @@ public class GameManager : MonoBehaviour
         // Generate our level
         levelGenerator.GenerateLevel();
 
-        // Spawn our player
-        SpawnPlayer(Vector3.zero);
+        // IF we are single player
+        if (!isSplitScreen)
+        {
+            // Spawn our player
+            SpawnPlayer(Vector3.zero);
+
+            // Set our players camera to the correct screen viewport rect
+            Rect viewport = new Rect(0.0f, 0.0f, 1.0f, 1.0f);
+            players[0].playerCamera.rect = viewport;
+        } else
+        {
+            // Spawn our players
+            // TODO: Polish this -- find a better algorithm for how to find the spawn point for players!
+            SpawnPlayer(Vector3.zero);
+            SpawnPlayer(new Vector3(10,0,10));
+
+            // Set our players camera to the correct screen viewport rect
+            Rect viewport = new Rect(0.0f, 0.0f, 0.5f, 1.0f);
+            players[0].playerCamera.rect = viewport;
+            viewport = new Rect(0.5f, 0.0f, 0.5f, 1.0f);
+            players[1].playerCamera.rect = viewport;  
+        }
     }
 
     public void ActivateOptionsScreen()

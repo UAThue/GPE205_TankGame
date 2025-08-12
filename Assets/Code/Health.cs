@@ -6,6 +6,8 @@ public class Health : MonoBehaviour
     public float maxHealth;
     public float currentHealth;
     private Death deathComponent;
+    private AudioSource audioSource;
+    public AudioClip takeDamageSoundClip;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -14,7 +16,10 @@ public class Health : MonoBehaviour
         deathComponent = GetComponent<Death>();
 
         // Start with Max Health
-        currentHealth = maxHealth;        
+        currentHealth = maxHealth;
+
+        // Get the Audio Source Component
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -30,6 +35,12 @@ public class Health : MonoBehaviour
     // Take Damage
     public void TakeDamage (float damage)
     {
+        // Play sound
+        if (audioSource != null)
+        {
+            audioSource.PlayOneShot(takeDamageSoundClip);
+        }
+
         // subtract from our health
         currentHealth -= damage;
 

@@ -6,11 +6,15 @@ public class TankShooter : Shooter
     public Transform shootPosition;
     [HideInInspector] public float nextShootTime;
 
+    public AudioSource audioSource;
+
     private NoiseMaker noiseMaker;
 
     public override void Start()
     {
+        // Get our components
         noiseMaker = GetComponent<NoiseMaker>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public override void TryShoot(Pawn shooterPawn)
@@ -42,6 +46,9 @@ public class TankShooter : Shooter
         {
             noiseMaker.MakeNoise(shootingNoiseVolume);
         }
+
+        // Play the sound
+        audioSource.Play();
     }
 
 }

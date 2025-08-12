@@ -492,6 +492,7 @@ MonoBehaviour:
   doorSouth: {fileID: 1899862832391660024}
   doorEast: {fileID: 1159302018984924525}
   doorWest: {fileID: 6460585669769907437}
+  difficultyLevel: 0
 --- !u!1 &6329114640827956279
 GameObject:
   m_ObjectHideFlags: 0
